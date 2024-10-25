@@ -1,40 +1,39 @@
-<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.Date"%>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>current date and time</title>
+<title>Result of the calculate</title>
 
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" >
 </head>
 <body>
-	
 	<%
-		Date date = new Date();
 	
-		SimpleDateFormat dateFormatter = new SimpleDateFormat("YYYY년 M월 d일");
-		String dateString = dateFormatter.format(date);
+		int number1 = Integer.parseInt(request.getParameter("number1"));
+		int number2 = Integer.parseInt(request.getParameter("number1"));
 		
-		SimpleDateFormat timeFormatter = new SimpleDateFormat("H시 m분 s초");
-		String timeString = timeFormatter.format(date);
+		// plus, minus, timesm, devided
+		String operator = request.getParameter("operator");
 		
-		String what = request.getParameter("what");
-		
-		String result = null;
-		
-		if(what.equals("time")) {
-			result = timeString;
-		} else if (what.equals("date")) {
-			result = dateString;
+		double result = 0;
+		if(operator.equals("+")) {
+			result = number1 + number2;
+		} else if (operator.equals("-")) {
+			result = number1 - number2;
+		} else if (operator.equals("x")) {
+			result = number1 * number2;
+		} else {
+			result = number1 / (double)number2;
 		}
+		
 		
 	%>
 	
 	<div class="container">
-		<div class="display-4"><%= result %></div>
+		<h1>result of the calculate</h1>
+		<div class="display-1"><%= number1 %> <%= operator %> <%= number2 %> = <span class="text-primary"><%= result %></span></div>
 	</div>
 	
 	
