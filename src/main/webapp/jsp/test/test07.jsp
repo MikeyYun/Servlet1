@@ -53,13 +53,18 @@
 		<tbody>
 			<% for(Map<String, Object> info:list) { 
 					if(menu.equals(info.get("menu"))) {
+						// If pointFilter is null
+						// If pointFilter isn't null, only result over 4 the point
+						double point = (Double) info.get("point");
+						if(pointFilter == null || /* (pointFilter != null && */ point > 4.0) {
 			%>
 			<tr>
 				<td><%= info.get("menu") %></td>
 				<td><%= info.get("name") %></td>
 				<td><%= info.get("point") %></td>
 			</tr>
-			<% } 
+			<%  }
+			  }
 			} %>
 		</tbody>
 		</table>

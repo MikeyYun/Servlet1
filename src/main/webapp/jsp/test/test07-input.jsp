@@ -10,10 +10,11 @@
 <body>
 
 	<div class="container">
+	<h1>메뉴 검색</h1>
 		<form method="get" action="/jsp/test/test07.jsp">
 		<div class="d-flex">
 			<input type="text" class="form-control col-3" name="menu">
-			<label><input="checkbox">4점 이하 제외</label>
+			<label><input="checkbox" name="pointFilter">4점 이하 제외</label>
 			<button type="submit" class="btn btn-success" name="pointFilter">검색</button>
 		</div>
 		</form>
